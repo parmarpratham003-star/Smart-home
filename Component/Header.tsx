@@ -1,6 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+// 1. Trendy Outfit Font
+import { Outfit } from "next/font/google";
+
+const outfit = Outfit({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"] 
+});
 
 const HomeIcon = () => (
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -12,7 +19,7 @@ const HomeIcon = () => (
 );
 
 const MenuIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2">
     <line x1="3" y1="6" x2="21" y2="6"/>
     <line x1="3" y1="12" x2="21" y2="12"/>
     <line x1="3" y1="18" x2="21" y2="18"/>
@@ -20,7 +27,7 @@ const MenuIcon = () => (
 );
 
 const CloseIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2">
     <line x1="18" y1="6" x2="6" y2="18"/>
     <line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
@@ -45,18 +52,18 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className={`bg-white sticky top-0 z-50 transition-all duration-300 ${
-      scrolled ? "shadow-lg border-b" : "shadow-md"
+    <nav className={`${outfit.className} bg-white sticky top-0 z-50 transition-all duration-300 ${
+      scrolled ? "shadow-lg border-b border-gray-100" : "shadow-md"
     }`}>
       
-      <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        {/* Logo */}
+        {/* Logo - Trendy Outfit Weight / Original Colors */}
         <Link href="/" className="flex items-center gap-2 group">
           <span className="transition-transform duration-300 group-hover:scale-110">
             <HomeIcon />
           </span>
-          <span className="text-xl font-medium tracking-[0.5px] text-violet-800 group-hover:text-violet-600 transition-all duration-300">
+          <span className="text-2xl font-extrabold tracking-tight text-violet-800 group-hover:text-violet-600 transition-all duration-300">
             Smart<span className="text-orange-500">Home</span>
           </span>
         </Link>
@@ -70,7 +77,7 @@ export default function Header() {
                 onClick={() => setActiveLink(label)}
                 className="group relative"
               >
-                <span className={`text-sm font-medium tracking-[0.5px] transition-all duration-300 ${
+                <span className={`text-[15px] font-semibold tracking-tight transition-all duration-300 ${
                   activeLink === label
                     ? "text-violet-600"
                     : "text-gray-500 group-hover:text-violet-600"
@@ -78,18 +85,20 @@ export default function Header() {
                   {label}
                 </span>
 
-                {/* Underline */}
-                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-violet-500 transition-all duration-300 group-hover:w-full"></span>
+                {/* RESTORED: Original Full Underline Hover Effect */}
+                <span className={`absolute left-0 -bottom-1 h-[2px] bg-violet-500 transition-all duration-300 ${
+                    activeLink === label ? "w-full" : "w-0 group-hover:w-full"
+                }`}></span>
               </Link>
             </li>
           ))}
         </ul>
 
-        {/* CTA Button */}
+        {/* CTA Button - Original Colors & Gradient */}
         <button className="
           hidden md:inline-flex
-          px-6 py-2.5 rounded-[3px]
-          text-sm font-semibold tracking-[0.5px]
+          px-6 py-2.5 rounded-[4px]
+          text-sm font-bold tracking-tight
           text-white
           bg-gradient-to-r from-orange-500 to-orange-400
           shadow-sm
@@ -112,7 +121,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div className={`md:hidden px-6 overflow-hidden transition-all duration-300 ${
-        mobileOpen ? "max-h-96 py-3" : "max-h-0"
+        mobileOpen ? "max-h-96 py-5 border-t border-gray-50" : "max-h-0"
       }`}>
         {links.map(({ label, href }) => (
           <Link
@@ -122,7 +131,9 @@ export default function Header() {
               setActiveLink(label);
               setMobileOpen(false);
             }}
-            className="block py-3 border-b text-sm font-medium tracking-[0.5px] text-gray-600 hover:text-violet-600"
+            className={`block py-3 text-lg font-bold tracking-tight transition-colors ${
+                activeLink === label ? "text-violet-600" : "text-gray-600"
+            }`}
           >
             {label}
           </Link>
@@ -131,11 +142,8 @@ export default function Header() {
         <button className="
           mt-4 w-full
           bg-gradient-to-r from-orange-500 to-orange-400
-          text-white py-2.5 rounded-[3px]
-          text-sm font-semibold tracking-[0.5px]
-          transition-all duration-300
-          hover:from-orange-600 hover:to-orange-500
-          hover:shadow-md
+          text-white py-3 rounded-[4px]
+          text-sm font-bold tracking-tight
         ">
           Get Started
         </button>
