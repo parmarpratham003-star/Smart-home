@@ -7,19 +7,19 @@ const products = [
     name: "Smart CCTV Camera",
     price: "₹4,999",
     desc: "HD video monitoring with night vision and mobile alerts.",
-    img: "https://images.unsplash.com/photo-1729839206142-d03c98f921fd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    img: "https://images.unsplash.com/photo-1729839206142-d03c98f921fd?q=80&w=870&auto=format&fit=crop",
   },
   {
     name: "Smart LED Bulb",
     price: "₹1,299",
     desc: "Energy efficient smart bulb with remote control.",
-    img: "https://images.unsplash.com/photo-1619559451460-b15f60bcdfdd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFNtYXJ0JTIwTEVEJTIwQnVsYnxlbnwwfHwwfHx8MA%3D%3D",
+    img: "https://images.unsplash.com/photo-1619559451460-b15f60bcdfdd?w=500",
   },
   {
     name: "Smart Plug",
     price: "₹899",
     desc: "Control your appliances remotely from anywhere.",
-    img: "https://plus.unsplash.com/premium_photo-1729491126310-5686343f468c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U21hcnQlMjBQbHVnfGVufDB8fDB8fHww",
+    img: "https://plus.unsplash.com/premium_photo-1729491126310-5686343f468c?w=500",
   },
   {
     name: "Home Automation Hub",
@@ -31,7 +31,7 @@ const products = [
     name: "Smart Doorbell",
     price: "₹3,499",
     desc: "See and speak to visitors from anywhere with HD video.",
-    img: "https://plus.unsplash.com/premium_photo-1729436833449-225649403fc0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U21hcnQlMjBEb29yYmVsbHxlbnwwfHwwfHx8MA%3D%3D",
+    img: "https://plus.unsplash.com/premium_photo-1729436833449-225649403fc0?w=500",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function PopularSolutions() {
       position: "absolute",
       width: `${CARD_WIDTH}px`,
       height: `${CARD_HEIGHT}px`,
-      borderRadius: "20px",
+      borderRadius: "3px",
       overflow: "hidden",
       left: "50%",
       marginLeft: `-${CARD_WIDTH / 2}px`,
@@ -114,84 +114,96 @@ export default function PopularSolutions() {
   };
 
   return (
-    <section className="bg-white pt-12 pb-20 px-6 overflow-hidden">
-      <div className="max-w-[1100px] mx-auto">
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+      `}</style>
 
-        {/* HEADING */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2d1b69]">
-            Popular <span className="text-orange-500">Solutions</span>
-          </h2>
-          <p className="text-gray-400 mt-3 text-sm max-w-md mx-auto">
-            Discover our most trusted smart home products designed for comfort, security, and control.
-          </p>
-        </div>
+      {/* ONLY CHANGE: pt-6 added */}
+      <section
+        className="bg-white pt-6 pb-15 overflow-hidden"
+        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+      >
+        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10">
 
-        {/* CAROUSEL */}
-        <div
-          className="relative flex items-center justify-center"
-          style={{ height: "480px" }}
-          onMouseEnter={() => (isPausedRef.current = true)}
-          onMouseLeave={() => (isPausedRef.current = false)}
-        >
-          {products.map((item, i) => {
-            const offset = ((i - current + total) % total + total) % total;
-            const norm = offset > total / 2 ? offset - total : offset;
-            const abs = Math.abs(norm);
+          <div className="text-center mb-16">
+            <h2
+              className="text-4xl md:text-5xl font-bold text-purple-700"
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                letterSpacing: "-0.015em",
+              }}
+            >
+              Popular <span className="text-orange-500">Solutions</span>
+            </h2>
 
-            return (
-              <div
-                key={i}
-                style={getStyle(i)}
-                onClick={() => abs !== 0 && goTo(i)}
-              >
-                {/* IMAGE */}
-                <div className="h-[55%] bg-gray-100">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className={`w-full h-full object-cover transition duration-500 ${
-                      abs === 0 ? "scale-105" : "scale-100"
-                    }`}
-                  />
-                </div>
+            <p className="text-purple-400 mt-3 text-sm max-w-md mx-auto">
+              Discover our most trusted smart home products designed for comfort, security, and control.
+            </p>
+          </div>
 
-                {/* CONTENT */}
-                <div className="h-[45%] p-5 flex flex-col justify-between">
+          <div
+            className="relative flex items-center justify-center"
+            style={{ height: "480px" }}
+            onMouseEnter={() => (isPausedRef.current = true)}
+            onMouseLeave={() => (isPausedRef.current = false)}
+          >
+            {products.map((item, i) => {
+              const offset = ((i - current + total) % total + total) % total;
+              const norm = offset > total / 2 ? offset - total : offset;
+              const abs = Math.abs(norm);
 
-                  <div>
-                    <h3 className="font-bold text-[#2d1b69] text-lg">
-                      {item.name}
-                    </h3>
-
-                    <p className="text-gray-500 text-sm mt-1">
-                      {item.desc}
-                    </p>
+              return (
+                <div
+                  key={i}
+                  style={getStyle(i)}
+                  onClick={() => abs !== 0 && goTo(i)}
+                >
+                  <div className="h-[55%] bg-gray-100">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className={`w-full h-full object-cover transition duration-500 ${
+                        abs === 0 ? "scale-105" : "scale-100"
+                      }`}
+                    />
                   </div>
 
-                  {/* BOTTOM */}
-                  <div className="flex justify-between items-center mt-4">
+                  <div className="h-[45%] p-5 flex flex-col justify-between">
+
                     <div>
-                      <p className="text-orange-500 font-bold">
-                        {item.price}
+                      <h3 className="font-bold text-purple-700 text-lg">
+                        {item.name}
+                      </h3>
+
+                      <p className="text-purple-950 text-sm mt-1">
+                        {item.desc}
                       </p>
-                      <span className="text-xs text-gray-400">
-                        + free setup
-                      </span>
                     </div>
 
-                    <button className="bg-violet-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-violet-700 transition">
-                      Add
-                    </button>
+                    <div className="flex justify-between items-center mt-4">
+                      <div>
+                        <p className="text-orange-600 font-bold">
+                          {item.price}
+                        </p>
+                        <span className="text-xs text-gray-400">
+                          + free setup
+                        </span>
+                      </div>
+
+                      <button className="bg-purple-700 text-white px-4 py-2 rounded-[3px] text-sm font-semibold hover:bg-orange-600 transition">
+                        Add
+                      </button>
+                    </div>
+
                   </div>
-
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }

@@ -13,14 +13,13 @@ import WhyChooseUs from "@/Component/Home/WhyChooseUs";
 export default function Home() {
   return (
     <div>
-      <Header />
       <Hero />
       <PopularSolutions />
       <WhyChooseUs />
       <StatsCounter />
       <TestimonialsSection />
       <CTASection />
-      <Footer />
+    
     </div>
   );
 }

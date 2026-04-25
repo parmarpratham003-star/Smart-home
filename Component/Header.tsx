@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-// 1. Trendy Outfit Font
-import { Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-const outfit = Outfit({ 
+const jakarta = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"] 
 });
@@ -35,7 +34,7 @@ const CloseIcon = () => (
 
 const links = [
   { label: "Home", href: "/" },
-  { label: "Solutions", href: "/solutions" },
+  { label: "Solutions", href: "/Solutions" }, 
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -52,102 +51,108 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className={`${outfit.className} bg-white sticky top-0 z-50 transition-all duration-300 ${
-      scrolled ? "shadow-lg border-b border-gray-100" : "shadow-md"
-    }`}>
-      
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&display=swap');
+        .logo-text { font-family: 'Cormorant Garamond', Georgia, serif; }
+      `}</style>
 
-        {/* Logo - Trendy Outfit Weight / Original Colors */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <span className="transition-transform duration-300 group-hover:scale-110">
-            <HomeIcon />
-          </span>
-          <span className="text-2xl font-extrabold tracking-tight text-violet-800 group-hover:text-violet-600 transition-all duration-300">
-            Smart<span className="text-orange-500">Home</span>
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map(({ label, href }) => (
-            <li key={label}>
-              <Link
-                href={href}
-                onClick={() => setActiveLink(label)}
-                className="group relative"
-              >
-                <span className={`text-[15px] font-semibold tracking-tight transition-all duration-300 ${
-                  activeLink === label
-                    ? "text-violet-600"
-                    : "text-gray-500 group-hover:text-violet-600"
-                }`}>
-                  {label}
-                </span>
-
-                {/* RESTORED: Original Full Underline Hover Effect */}
-                <span className={`absolute left-0 -bottom-1 h-[2px] bg-violet-500 transition-all duration-300 ${
-                    activeLink === label ? "w-full" : "w-0 group-hover:w-full"
-                }`}></span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* CTA Button - Original Colors & Gradient */}
-        <button className="
-          hidden md:inline-flex
-          px-6 py-2.5 rounded-[4px]
-          text-sm font-bold tracking-tight
-          text-white
-          bg-gradient-to-r from-orange-500 to-orange-400
-          shadow-sm
-          transition-all duration-300
-          hover:from-orange-600 hover:to-orange-500
-          hover:shadow-md
-          active:scale-95
-        ">
-          Get Started
-        </button>
-
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-violet-800"
-        >
-          {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`md:hidden px-6 overflow-hidden transition-all duration-300 ${
-        mobileOpen ? "max-h-96 py-5 border-t border-gray-50" : "max-h-0"
+      <nav className={`${jakarta.className} bg-white sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? "shadow-lg border-b border-purple-100" : "shadow-md"
       }`}>
-        {links.map(({ label, href }) => (
-          <Link
-            key={label}
-            href={href}
-            onClick={() => {
-              setActiveLink(label);
-              setMobileOpen(false);
-            }}
-            className={`block py-3 text-lg font-bold tracking-tight transition-colors ${
-                activeLink === label ? "text-violet-600" : "text-gray-600"
-            }`}
-          >
-            {label}
-          </Link>
-        ))}
+        
+        <div className="max-w-[1200px] mx-auto px-6 py-4 flex justify-between items-center">
 
-        <button className="
-          mt-4 w-full
-          bg-gradient-to-r from-orange-500 to-orange-400
-          text-white py-3 rounded-[4px]
-          text-sm font-bold tracking-tight
-        ">
-          Get Started
-        </button>
-      </div>
-    </nav>
+          {/* Logo — Cormorant Garamond matching HeroSection headline font */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <span className="transition-transform duration-300 group-hover:scale-110">
+              <HomeIcon />
+            </span>
+            <span className="logo-text text-3xl font-extrabold tracking-tight text-purple-700 group-hover:text-purple-600 transition-all duration-300">
+              Smart<span className="text-orange-500">Home</span>
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <ul className="hidden md:flex items-center gap-8">
+            {links.map(({ label, href }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  onClick={() => setActiveLink(label)}
+                  className="group relative"
+                >
+                  <span className={`text-[15px] font-semibold tracking-tight transition-all duration-300 ${
+                    activeLink === label
+                      ? "text-purple-700"
+                      : "text-gray-500 group-hover:text-purple-600"
+                  }`}>
+                    {label}
+                  </span>
+
+                  <span className={`absolute left-0 -bottom-1 h-[2px] bg-purple-600 transition-all duration-300 ${
+                      activeLink === label ? "w-full" : "w-0 group-hover:w-full"
+                  }`}></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA Button */}
+          <button className="
+            hidden md:inline-flex
+            px-6 py-2.5 rounded-[4px]
+            text-sm font-bold tracking-tight
+            text-white
+            bg-gradient-to-r from-orange-500 to-orange-400
+            shadow-sm
+            transition-all duration-300
+            hover:from-orange-600 hover:to-orange-500
+            hover:shadow-md
+            active:scale-95
+          ">
+            Get Started
+          </button>
+
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 text-violet-800"
+          >
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden px-6 overflow-hidden transition-all duration-300 ${
+          mobileOpen ? "max-h-96 py-5 border-t border-gray-50" : "max-h-0"
+        }`}>
+          {links.map(({ label, href }) => (
+            <Link
+              key={label}
+              href={href}
+              onClick={() => {
+                setActiveLink(label);
+                setMobileOpen(false);
+              }}
+              className={`block py-3 text-lg font-bold tracking-tight transition-colors ${
+                  activeLink === label ? "text-violet-600" : "text-gray-600"
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
+
+          <button className="
+            mt-4 w-full
+            bg-gradient-to-r from-orange-500 to-orange-400
+            text-white py-3 rounded-[4px]
+            text-sm font-bold tracking-tight
+          ">
+            Get Started
+          </button>
+        </div>
+      </nav>
+    </>
   );
 }
