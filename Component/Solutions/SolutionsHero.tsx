@@ -3,8 +3,7 @@
 import { useEffect, useRef } from "react";
 
 export default function SolutionsHero() {
-  // ✅ FIXED (no TS error)
-  const itemsRef = useRef<any[]>([]);
+  const itemsRef = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     itemsRef.current.forEach((el, i) => {
@@ -27,7 +26,7 @@ export default function SolutionsHero() {
 
   return (
     <section
-      className="w-full min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:min-h-[60    0px] bg-cover bg-center flex items-start pt-12 md:pt-16"
+      className="w-full min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:min-h-[600px] bg-cover bg-center flex items-start pt-12 md:pt-16"
       style={{ backgroundImage: "url('shero1.png')" }}
     >
       <div className="w-full">
@@ -37,7 +36,9 @@ export default function SolutionsHero() {
 
             {/* BADGE */}
             <div
-              ref={(el) => (itemsRef.current[0] = el)}
+              ref={(el) => {
+                if (el) itemsRef.current[0] = el;
+              }}
               className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-purple-200"
             >
               <span className="h-[1.5px] w-5 bg-purple-200" />
@@ -46,7 +47,9 @@ export default function SolutionsHero() {
 
             {/* HEADING */}
             <h1
-              ref={(el) => (itemsRef.current[1] = el)}
+              ref={(el) => {
+                if (el) itemsRef.current[1] = el;
+              }}
               className="font-extrabold tracking-tight text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.2] md:leading-[1.15]"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
@@ -56,19 +59,24 @@ export default function SolutionsHero() {
 
             {/* TEXT */}
             <p
-              ref={(el) => (itemsRef.current[2] = el)}
+              ref={(el) => {
+                if (el) itemsRef.current[2] = el;
+              }}
               className="text-xs sm:text-sm text-white/80 max-w-[380px] leading-[1.7]"
             >
               Explore our range of smart home products and services designed to make your life easier, safer, and more efficient.
             </p>
 
             {/* BUTTON */}
-            <div ref={(el) => (itemsRef.current[3] = el)}>
+            <div
+              ref={(el) => {
+                if (el) itemsRef.current[3] = el;
+              }}
+            >
               <button className="relative overflow-hidden group flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm rounded-[3px] font-semibold transition">
 
                 Need Help →
 
-                {/* ✨ SHINY EFFECT */}
                 <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition">
                   <span className="absolute -left-1/2 top-0 h-full w-1/2 bg-white/40 skew-x-[-20deg] group-hover:animate-[shine_0.6s_forwards]" />
                 </span>
@@ -80,7 +88,6 @@ export default function SolutionsHero() {
         </div>
       </div>
 
-      {/* ✨ animation */}
       <style>{`
         @keyframes shine {
           100% { left: 150%; }
