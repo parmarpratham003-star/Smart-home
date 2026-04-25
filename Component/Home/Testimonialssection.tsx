@@ -77,7 +77,7 @@ export default function TestimonialsSection() {
         className="bg-white pt-8 pb-14 md:pt-10 md:pb-16 overflow-hidden"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
 
           {/* ✅ HEADING FIXED */}
           <div className="text-center mb-8 md:mb-10">
@@ -94,7 +94,7 @@ export default function TestimonialsSection() {
               }}
             >
               <span className="text-purple-400">What Our </span>
-              <span className="text-purple-700">Customers</span>
+              <span className="text-[#55226D]">Customers</span>
               <span className="text-orange-400"> Say</span>
             </motion.h2>
 
@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="text-purple-400 text-sm mt-2"
+              className="text-[#55226D] text-sm mt-2"
             >
               Trusted by homeowners across the country.
             </motion.p>
@@ -139,15 +139,15 @@ export default function TestimonialsSection() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.4 }}
-                  className="bg-purple-50 border border-purple-100 rounded-[3px] px-5 sm:px-10 py-6 text-center"
+                  className="bg-purple-50  rounded-[3px] px-5 sm:px-10 py-6 text-center"
                 >
                  <div className="flex justify-center mb-4">
-                  <div className="text-purple-700 text-5xl leading-none font-bold">
+                  <div className="text-[#55226D] text-5xl leading-none font-bold">
                     “
                   </div>
                 </div>
 
-                  <p className="text-purple-500 text-sm md:text-base max-w-xl mx-auto mb-6">
+                  <p className="text-[#55226D] text-sm md:text-base max-w-xl mx-auto mb-6">
                     {t.quote}
                   </p>
 
@@ -156,10 +156,10 @@ export default function TestimonialsSection() {
                       {t.avatar}
                     </div>
                     <div className="text-left">
-                      <p className="font-semibold text-purple-900 text-sm">
+                      <p className="font-semibold text-[#55226D] text-sm">
                         {t.name}
                       </p>
-                      <p className="text-purple-400 text-xs">
+                      <p className="text-[#55226D] text-xs">
                         {t.role}
                       </p>
                     </div>
@@ -178,7 +178,7 @@ export default function TestimonialsSection() {
                 key={i}
                 onClick={() => goTo(i, i > current ? 1 : -1)}
                 className={`h-2 rounded-full transition-all ${
-                  i === current ? "w-6 bg-purple-700" : "w-2 bg-purple-300"
+                  i === current ? "w-6 bg-[#55226D]" : "w-2 bg-purple-300"
                 }`}
               />
             ))}

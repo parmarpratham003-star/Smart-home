@@ -121,8 +121,8 @@ export default function StatsCounter() {
   }, []);
 
   return (
-    <div className="w-full bg-[#3d2b9e]" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-10">
+    <div className="w-full bg-[#3d2b9e  ]" ref={ref}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
 
         {/* FLEX RESPONSIVE (STYLE SAME) */}
         <div className="flex flex-wrap items-center justify-center">

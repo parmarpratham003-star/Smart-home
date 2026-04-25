@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // ✅ added
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 const jakarta = Plus_Jakarta_Sans({ 
@@ -40,9 +41,10 @@ const links = [
 ];
 
 export default function Header() {
-  const [activeLink, setActiveLink] = useState("Home");
+  const [activeLink, setActiveLink] = useState("Home"); // unchanged
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname(); // ✅ added
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -61,14 +63,14 @@ export default function Header() {
         scrolled ? "shadow-lg border-b border-purple-100" : "shadow-md"
       }`}>
         
-        <div className="max-w-[1200px] mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-          {/* Logo — Cormorant Garamond matching HeroSection headline font */}
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <span className="transition-transform duration-300 group-hover:scale-110">
               <HomeIcon />
             </span>
-            <span className="logo-text text-3xl font-extrabold tracking-tight text-purple-700 group-hover:text-purple-600 transition-all duration-300">
+            <span className="logo-text text-3xl font-extrabold tracking-tight text-[#55226D] group-hover:text-purple-800 transition-all duration-300">
               Smart<span className="text-orange-500">Home</span>
             </span>
           </Link>
@@ -83,15 +85,15 @@ export default function Header() {
                   className="group relative"
                 >
                   <span className={`text-[15px] font-semibold tracking-tight transition-all duration-300 ${
-                    activeLink === label
-                      ? "text-purple-700"
-                      : "text-gray-500 group-hover:text-purple-600"
+                    pathname === href
+                      ? "text-[#55226D]"
+                      : "text-gray-500 group-hover:text-[#55226D]"
                   }`}>
                     {label}
                   </span>
 
-                  <span className={`absolute left-0 -bottom-1 h-[2px] bg-purple-600 transition-all duration-300 ${
-                      activeLink === label ? "w-full" : "w-0 group-hover:w-full"
+                  <span className={`absolute left-0 -bottom-1 h-[2px] bg-[#55226D] transition-all duration-300 ${
+                      pathname === href ? "w-full" : "w-0 group-hover:w-full"
                   }`}></span>
                 </Link>
               </li>
@@ -117,7 +119,7 @@ export default function Header() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-violet-800"
+            className="md:hidden p-2 text-[#55226D]"
           >
             {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -136,7 +138,7 @@ export default function Header() {
                 setMobileOpen(false);
               }}
               className={`block py-3 text-lg font-bold tracking-tight transition-colors ${
-                  activeLink === label ? "text-violet-600" : "text-gray-600"
+                  pathname === href ? "text-[#55226D]" : "text-gray-600"
               }`}
             >
               {label}

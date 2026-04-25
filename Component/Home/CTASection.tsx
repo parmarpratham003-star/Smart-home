@@ -18,7 +18,7 @@ export default function CTASection() {
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         {/* HEADER PADDING MATCH */}
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -41,7 +41,7 @@ export default function CTASection() {
 
               {/* HEADING (HERO STYLE) */}
               <h2
-                className="text-2xl sm:text-3xl font-bold text-purple-700 leading-snug"
+                className="text-2xl sm:text-3xl font-bold text-[#55226D] leading-snug"
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
                   letterSpacing: "-0.015em",
@@ -50,7 +50,7 @@ export default function CTASection() {
                 Get <span className="text-orange-500">10% Off</span> On Your Home Setup
               </h2>
 
-              <p className="text-purple-400 text-sm mt-3 mb-5 sm:mb-6 max-w-md">
+              <p className="text-[#55226D] text-sm mt-3 mb-5 sm:mb-6 max-w-md">
                 Join our community and receive exclusive offers and setup discounts.
               </p>
 
@@ -61,10 +61,10 @@ export default function CTASection() {
                   placeholder="Your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 border border-gray-300 px-4 py-3 text-purple-400 rounded-[3px] text-sm outline-none focus:border-violet-500"
+                  className="flex-1 border border-gray-300 px-4 py-3 text-[#55226D] rounded-[3px] text-sm outline-none focus:border-[#55226D]"
                 />
 
-                <button className="bg-purple-700 hover:bg-orange-600 text-white px-6 py-3 rounded-[3px] text-sm font-semibold transition w-full sm:w-auto">
+                <button className="bg-[#55226D] hover:bg-orange-600 text-white px-6 py-3 rounded-[3px] text-sm font-semibold transition w-full sm:w-auto">
                   Get Quote
                 </button>
               </div>

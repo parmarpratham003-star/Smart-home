@@ -20,13 +20,13 @@ export default function WhyChooseUs() {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
       `}</style>
 
-      {/* ONLY CHANGE IS HERE ↓ */}
       <section
-        className="bg-white  pb-20 overflow-hidden"
+        className="bg-white pb-20 overflow-hidden"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
 
+          {/* HEADER */}
           <div className="grid md:grid-cols-2 gap-6 items-center mb-14">
 
             <motion.h2
@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
               }}
             >
               <span className="text-purple-400">Why </span>
-              <span className="text-purple-600">Choose</span>
+              <span className="text-[#55226D]">Choose</span>
               <span className="text-orange-400"> Us</span>
             </motion.h2>
 
@@ -50,13 +50,14 @@ export default function WhyChooseUs() {
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-purple-400 text-sm md:text-base leading-relaxed max-w-md md:ml-auto"
+              className="text-[#55226D] text-sm md:text-base leading-relaxed max-w-md md:ml-auto"
             >
-              We are a technology-driven company focused on delivering innovative smart home solutions. 
+              We are a technology-driven company focused on delivering innovative smart home solutions.
             </motion.p>
 
           </div>
 
+          {/* GRID */}
           <div className="grid md:grid-cols-3 gap-6">
 
             <motion.div
@@ -65,9 +66,7 @@ export default function WhyChooseUs() {
               viewport={{ once: true }}
               variants={{
                 hidden: {},
-                visible: {
-                  transition: { staggerChildren: 0.2 },
-                },
+                visible: { transition: { staggerChildren: 0.2 } },
               }}
               className="md:col-span-2 grid sm:grid-cols-2 gap-6"
             >
@@ -99,8 +98,6 @@ export default function WhyChooseUs() {
             <Card
               title="24/7 Customer Support"
               desc="Our support team is available anytime to assist you with your smart home needs."
-              extraTitle="Reliable Assistance"
-              extraDesc="We ensure quick response and complete customer satisfaction."
               img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200"
               direction="right"
               tall
@@ -120,8 +117,6 @@ function Card({
   direction,
   big,
   tall,
-  extraTitle,
-  extraDesc,
 }: CardProps) {
   const animation =
     direction === "left"
@@ -147,27 +142,28 @@ function Card({
         className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
       />
 
+      {/* BASE OVERLAY */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-violet-900/80 to-transparent 
-                      opacity-0 group-hover:opacity-100 transition duration-500"></div>
+      {/* HOVER BLACK OVERLAY */}
+      <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
+      {/* TITLE */}
       <h3 className="absolute bottom-5 left-5 text-white text-lg font-semibold z-10 drop-shadow-md
                      transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
         {title}
       </h3>
 
+      {/* HOVER CONTENT */}
       <div className="absolute inset-0 flex flex-col justify-end p-5 text-white z-20
                       opacity-0 translate-y-full
                       group-hover:opacity-100 group-hover:translate-y-0
                       transition-all duration-500">
 
-        <p className="text-sm leading-relaxed mb-3 drop-shadow-md">
+        <p className="text-sm leading-relaxed drop-shadow-md">
           {desc}
         </p>
 
-        
-      
       </div>
     </motion.div>
   );

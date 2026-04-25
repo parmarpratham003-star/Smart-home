@@ -106,7 +106,7 @@ export default function Footer() {
       `}</style>
 
       {/* MAIN */}
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
         {/* BRAND — slides from left */}
         <div ref={brandRef} className="flex flex-col gap-4">
@@ -188,7 +188,7 @@ export default function Footer() {
 
       {/* BOTTOM */}
       <div ref={bottomRef} className="border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
           <p className="text-white/40 text-sm">© 2024 SmartHome. All rights reserved.</p>
 
           <div className="flex gap-4 text-sm text-white/40">

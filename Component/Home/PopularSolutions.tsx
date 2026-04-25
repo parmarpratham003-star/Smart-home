@@ -90,27 +90,27 @@ export default function PopularSolutions() {
       opacity = 0;
       zIndex = 1;
     }
+return {
+  position: "absolute",
+  width: `${CARD_WIDTH}px`,
+  height: `${CARD_HEIGHT}px`,
+  borderRadius: "3px",
+  overflow: "hidden",
+  left: "50%",
+  marginLeft: `-${CARD_WIDTH / 2}px`,
+  top: "45%",
+  transform: `translateY(-45%) translateX(${translateX}px) scale(${scale})`,
+  opacity,
+  zIndex,
+  background: "#fff",
+  transition: "all 0.5s ease",
 
-    return {
-      position: "absolute",
-      width: `${CARD_WIDTH}px`,
-      height: `${CARD_HEIGHT}px`,
-      borderRadius: "3px",
-      overflow: "hidden",
-      left: "50%",
-      marginLeft: `-${CARD_WIDTH / 2}px`,
-      top: "45%",
-      transform: `translateY(-45%) translateX(${translateX}px) scale(${scale})`,
-      opacity,
-      zIndex,
-      background: "#fff",
-      transition: "all 0.5s ease",
-      boxShadow:
-        abs === 0
-          ? "0 20px 60px rgba(124,58,237,0.25)"
-          : "0 8px 20px rgba(0,0,0,0.08)",
-      cursor: abs === 0 ? "default" : "pointer",
-    };
+  boxShadow: "none", // removed
+  border: "1px solid #eee", // ✅ FIX
+  filter: abs === 0 ? "none" : "blur(1px)", // ✅ OPTIONAL PREMIUM
+
+  cursor: abs === 0 ? "default" : "pointer",
+};
   };
 
   return (
@@ -119,16 +119,15 @@ export default function PopularSolutions() {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
       `}</style>
 
-      {/* ONLY CHANGE: pt-6 added */}
       <section
         className="bg-white pt-6 pb-15 overflow-hidden"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
 
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold text-purple-700"
+              className="text-4xl md:text-5xl font-bold text-[#55226D]"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 letterSpacing: "-0.015em",
@@ -137,7 +136,7 @@ export default function PopularSolutions() {
               Popular <span className="text-orange-500">Solutions</span>
             </h2>
 
-            <p className="text-purple-400 mt-3 text-sm max-w-md mx-auto">
+            <p className="text-[#55226D] mt-3 text-sm max-w-md mx-auto">
               Discover our most trusted smart home products designed for comfort, security, and control.
             </p>
           </div>
@@ -172,7 +171,7 @@ export default function PopularSolutions() {
                   <div className="h-[45%] p-5 flex flex-col justify-between">
 
                     <div>
-                      <h3 className="font-bold text-purple-700 text-lg">
+                      <h3 className="font-bold text-[#55226D] text-lg">
                         {item.name}
                       </h3>
 
@@ -191,7 +190,7 @@ export default function PopularSolutions() {
                         </span>
                       </div>
 
-                      <button className="bg-purple-700 text-white px-4 py-2 rounded-[3px] text-sm font-semibold hover:bg-orange-600 transition">
+                      <button className="bg-[#55226D] text-white px-4 py-2 rounded-[3px] text-sm font-semibold hover:bg-orange-600 transition">
                         Add
                       </button>
                     </div>

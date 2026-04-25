@@ -121,10 +121,7 @@ export default function HeroSection() {
         .hero-section { font-family: 'Plus Jakarta Sans', sans-serif; }
         .hero-headline { font-family: 'Cormorant Garamond', Georgia, serif; }
 
-        @keyframes pulse-orange {
-          0%, 100% { box-shadow: 0 6px 20px rgba(249,115,22,0.38); }
-          50%       { box-shadow: 0 6px 28px rgba(249,115,22,0.60); }
-        }
+        
         .btn-pulse { animation: pulse-orange 2.4s ease-in-out infinite; }
 
         @keyframes line-draw {
@@ -187,14 +184,14 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-white/80 md:hidden" />
 
           {/* ── HERO TEXT ── */}
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10 pt-10 pb-16 md:pt-14 md:pb-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-10 pb-16 md:pt-14 md:pb-20">
 
             {/* Badge */}
             <div
               ref={badgeRef}
-              className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.22em] uppercase text-violet-700 mb-6"
+              className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.22em] uppercase text-[#55226D] mb-6"
             >
-              <span className="inline-block h-[1.5px] bg-violet-700 badge-line" style={{ width: 22 }} />
+              <span className="inline-block h-[1.5px] bg-[#55226D] badge-line" style={{ width: 22 }} />
               Welcome to SmartHome
             </div>
 
@@ -204,13 +201,13 @@ export default function HeroSection() {
               className="hero-headline font-extrabold leading-[1.04] tracking-tight text-[#170a39] mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
             >
               Smart Living <br />
-              <em className="not-italic text-purple-700">Starts Here</em>
+              <em className="not-italic text-[#55226D]">Starts Here</em>
             </h1>
 
             {/* Subtext */}
             <p
               ref={subRef}
-              className="text-sm font-normal leading-relaxed text-purple-400 max-w-[360px] mb-9"
+              className="text-sm font-normal leading-relaxed text-[#55226D] max-w-[360px] mb-9"
             >
               Control your home with advanced automation solutions for a better and smarter life.
             </p>
@@ -220,7 +217,7 @@ export default function HeroSection() {
               <button className="btn-pulse btn-shiny inline-flex items-center gap-2 text-white text-[13px] font-semibold px-6 py-3 bg-orange-500 rounded-[3px] border-none cursor-pointer transition-all duration-200 hover:-translate-y-0.5 active:scale-95">
                 Get Started <ArrowRight />
               </button>
-              <button className="btn-shiny btn-shiny-outline inline-flex items-center gap-2 text-[13px] font-semibold px-6 py-3 text-violet-700 bg-transparent border border-violet-300 rounded-[3px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-violet-50 active:scale-95">
+              <button className="btn-shiny btn-shiny-outline inline-flex items-center gap-2 text-[13px] font-semibold px-6 py-3 text-[#55226D] bg-transparent border border-violet-300 rounded-[3px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-violet-50 active:scale-95">
                <Link href="/Solutions">
                 Explore Solutions</Link> <ArrowRight />
               </button>
@@ -232,7 +229,7 @@ export default function HeroSection() {
         {/* ── FEATURES BAR ── */}
         <div
           ref={featuresRef}
-          className="relative z-10 w-full max-w-[1100px] mx-auto px-5 sm:px-8 md:px-10 pb-12 -mt-7"
+          className="relative z-10 w-full max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10 pb-12 -mt-7"
         >
           <div className="bg-white/98 backdrop-blur-xl border border-purple-200/50 shadow-[0_16px_56px_rgba(109,40,217,0.09),0_2px_8px_rgba(0,0,0,0.04)] rounded-[3px] overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
@@ -244,8 +241,8 @@ export default function HeroSection() {
                 >
                   <div className="flex-shrink-0 mt-0.5">{icon}</div>
                   <div>
-                    <p className="text-[14px] font-bold mb-2 leading-tight text-purple-950">{title}</p>
-                    <p className="text-[12px] font-normal leading-relaxed text-purple-400">{desc}</p>
+                    <p className="text-[14px] font-bold mb-2 leading-tight text-[#55226D]">{title}</p>
+                    <p className="text-[12px] font-normal leading-relaxed text-[#55226D]">{desc}</p>
                   </div>
                 </div>
               ))}

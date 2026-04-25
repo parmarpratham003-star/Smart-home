@@ -1,69 +1,91 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 export default function SolutionsHero() {
+  // ✅ FIXED (no TS error)
+  const itemsRef = useRef<any[]>([]);
+
+  useEffect(() => {
+    itemsRef.current.forEach((el, i) => {
+      if (!el) return;
+
+      el.style.opacity = "0";
+      el.style.transform =
+        i % 2 === 0 ? "translateX(-40px)" : "translateX(40px)";
+      el.style.transition = `all 0.7s ease ${i * 120}ms`;
+    });
+
+    setTimeout(() => {
+      itemsRef.current.forEach((el) => {
+        if (!el) return;
+        el.style.opacity = "1";
+        el.style.transform = "translateX(0)";
+      });
+    }, 100);
+  }, []);
+
   return (
-    <>
-      {/* HERO FONTS */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-      `}</style>
+    <section
+      className="w-full min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:min-h-[60    0px] bg-cover bg-center flex items-start pt-12 md:pt-16"
+      style={{ backgroundImage: "url('shero1.png')" }}
+    >
+      <div className="w-full">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
 
-      <section
-        className="w-full min-h-[520px] md:min-h-[600px] lg:min-h-[650px] bg-no-repeat bg-cover bg-center flex items-center"
-        style={{
-          backgroundImage: "url('shero1.png')", // 👉 your image path
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-        }}
-      >
-        {/* OVERLAY */}
-        <div className="w-full ">
+          <div className="max-w-[520px] text-white space-y-7 sm:space-y-8 md:space-y-9">
 
-          <div className="max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10 py-16 md:py-20">
+            {/* BADGE */}
+            <div
+              ref={(el) => (itemsRef.current[0] = el)}
+              className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-purple-200"
+            >
+              <span className="h-[1.5px] w-5 bg-purple-200" />
+              Our Solutions
+            </div>
 
-            {/* CONTENT */}
-            <div className="max-w-[520px] text-white">
+            {/* HEADING */}
+            <h1
+              ref={(el) => (itemsRef.current[1] = el)}
+              className="font-extrabold tracking-tight text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.2] md:leading-[1.15]"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              Smart Solutions <br />
+              for Your <span className="text-orange-400">Home</span>
+            </h1>
 
-              {/* LABEL */}
-              <p className="text-purple-200 text-xs tracking-widest mb-3 font-semibold">
-                OUR SOLUTIONS
-              </p>
+            {/* TEXT */}
+            <p
+              ref={(el) => (itemsRef.current[2] = el)}
+              className="text-xs sm:text-sm text-white/80 max-w-[380px] leading-[1.7]"
+            >
+              Explore our range of smart home products and services designed to make your life easier, safer, and more efficient.
+            </p>
 
-              {/* HEADING */}
-              <h1
-                className="text-3xl sm:text-4xl md:text-5xl leading-tight mb-4"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 800,
-                }}
-              >
-                Smart Solutions <br />
-                for Your <span className="text-orange-400">Home</span>
-              </h1>
+            {/* BUTTON */}
+            <div ref={(el) => (itemsRef.current[3] = el)}>
+              <button className="relative overflow-hidden group flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm rounded-[3px] font-semibold transition">
 
-              {/* DESCRIPTION */}
-              <p className="text-white/80 text-sm mb-6 max-w-[420px]">
-                Explore our range of smart home products and services designed to make your life easier, safer, and more efficient.
-              </p>
+                Need Help →
 
-              {/* BUTTONS */}
-              <div className="flex flex-wrap gap-3">
-
-                <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 text-sm rounded-[3px] font-semibold transition">
-                  Explore Solutions →
-                </button>
-
-                <button className="bg-white/10 border border-white/30 text-white px-6 py-3 text-sm rounded-[3px] font-semibold hover:bg-white/20 transition">
-                  Need Help?
-                </button>
-
-              </div>
-
+                {/* ✨ SHINY EFFECT */}
+                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition">
+                  <span className="absolute -left-1/2 top-0 h-full w-1/2 bg-white/40 skew-x-[-20deg] group-hover:animate-[shine_0.6s_forwards]" />
+                </span>
+              </button>
             </div>
 
           </div>
 
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* ✨ animation */}
+      <style>{`
+        @keyframes shine {
+          100% { left: 150%; }
+        }
+      `}</style>
+    </section>
   );
 }
