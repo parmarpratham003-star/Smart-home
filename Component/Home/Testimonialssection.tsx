@@ -93,8 +93,8 @@ export default function TestimonialsSection() {
                 letterSpacing: "-0.015em",
               }}
             >
-              <span className="text-purple-400">What Our </span>
-              <span className="text-[#55226D]">Customers</span>
+              <span className="text-[#55226D]">What Our </span>
+              <span className="text-orange-400">Customers</span>
               <span className="text-orange-400"> Say</span>
             </motion.h2>
 

@@ -83,7 +83,7 @@ function StatItem({ stat, animate }: any) {
     <div className="flex items-center gap-4 py-8 md:py-9 justify-center">
 
       {/* ICON */}
-      <div className="w-14 h-14 rounded-full bg-[#5b45cc] flex items-center justify-center">
+      <div className="w-14 h-14 rounded-full bg-[#6b2d85] flex items-center justify-center">
         {stat.icon}
       </div>
 
@@ -95,7 +95,7 @@ function StatItem({ stat, animate }: any) {
             : `${count.toLocaleString()}${stat.suffix}`}
         </span>
 
-        <span className="text-[13px] mt-0.5 text-purple-300 font-medium whitespace-nowrap">
+        <span className="text-[13px] mt-0.5 text-purple-200 font-medium whitespace-nowrap">
           {stat.label}
         </span>
       </div>
@@ -121,10 +121,9 @@ export default function StatsCounter() {
   }, []);
 
   return (
-    <div className="w-full bg-[#3d2b9e]" ref={ref}>
+    <div className="w-full bg-[#55226D]" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
 
-        {/* FLEX RESPONSIVE (STYLE SAME) */}
         <div className="flex flex-wrap items-center justify-center">
 
           {stats.map((stat, i) => (

@@ -41,8 +41,8 @@ export default function WhyChooseUs() {
                 letterSpacing: "-0.015em",
               }}
             >
-              <span className="text-purple-400">Why </span>
-              <span className="text-[#55226D]">Choose</span>
+              <span className="text-[#55226D]">Why </span>
+              <span className="text-orange-400">Choose</span>
               <span className="text-orange-400"> Us</span>
             </motion.h2>
 
@@ -143,11 +143,18 @@ function Card({
       />
 
       {/* BASE OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+    <div className="absolute inset-0 
+                bg-gradient-to-t 
+                from-black/40 
+                via-black/10 
+                to-transparent"></div>
 
       {/* HOVER BLACK OVERLAY */}
-      <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-500"></div>
-
+     <div className="absolute inset-0 
+                bg-black/30 
+                opacity-0 
+                group-hover:opacity-100 
+                transition duration-500"></div>
       {/* TITLE */}
       <h3 className="absolute bottom-5 left-5 text-white text-lg font-semibold z-10 drop-shadow-md
                      transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">

@@ -25,74 +25,101 @@ export default function SolutionsHero() {
   }, []);
 
   return (
-    <section
-      className="w-full min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:min-h-[600px] bg-cover bg-center flex items-start pt-12 md:pt-16"
-      style={{ backgroundImage: "url('shero1.png')" }}
-    >
-      <div className="w-full">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+    <>
+      {/* FONTS */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-          <div className="max-w-[520px] text-white space-y-7 sm:space-y-8 md:space-y-9">
+        .hero-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-heading { font-family: 'Cormorant Garamond', serif; }
 
-            {/* BADGE */}
-            <div
-              ref={(el) => {
-                if (el) itemsRef.current[0] = el;
-              }}
-              className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-purple-200"
-            >
-              <span className="h-[1.5px] w-5 bg-purple-200" />
-              Our Solutions
-            </div>
+        @keyframes shiny-sweep {
+          0% { left: -75%; }
+          100% { left: 125%; }
+        }
 
-            {/* HEADING */}
-            <h1
-              ref={(el) => {
-                if (el) itemsRef.current[1] = el;
-              }}
-              className="font-extrabold tracking-tight text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.2] md:leading-[1.15]"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              Smart Solutions <br />
-              for Your <span className="text-orange-400">Home</span>
-            </h1>
+        .btn-shiny {
+          position: relative;
+          overflow: hidden;
+        }
 
-            {/* TEXT */}
-            <p
-              ref={(el) => {
-                if (el) itemsRef.current[2] = el;
-              }}
-              className="text-xs sm:text-sm text-white/80 max-w-[380px] leading-[1.7]"
-            >
-              Explore our range of smart home products and services designed to make your life easier, safer, and more efficient.
-            </p>
+        .btn-shiny::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -75%;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(255,255,255,0.15) 35%,
+            rgba(255,255,255,0.55) 50%,
+            rgba(255,255,255,0.15) 65%,
+            transparent 100%
+          );
+          transform: skewX(-15deg);
+          opacity: 0;
+        }
 
-            {/* BUTTON */}
-            <div
-              ref={(el) => {
-                if (el) itemsRef.current[3] = el;
-              }}
-            >
-              <button className="relative overflow-hidden group flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm rounded-[3px] font-semibold transition">
+        .btn-shiny:hover::after {
+          opacity: 1;
+          animation: shiny-sweep 0.55s ease forwards;
+        }
+      `}</style>
 
-                Need Help →
+      <section
+        className="hero-font w-full min-h-[480px] sm:min-h-[540px] md:min-h-[500px] bg-cover bg-center flex items-start pt-8 sm:pt-10 md:pt-12"
+        style={{ backgroundImage: "url('shero1.png')" }}
+      >
+        <div className="w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
 
-                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition">
-                  <span className="absolute -left-1/2 top-0 h-full w-1/2 bg-white/40 skew-x-[-20deg] group-hover:animate-[shine_0.6s_forwards]" />
-                </span>
-              </button>
+            <div className="max-w-[520px] text-white space-y-4 sm:space-y-5 md:space-y-6">
+
+              {/* BADGE */}
+              <div
+                ref={(el) => { if (el) itemsRef.current[0] = el; }}
+                className="flex items-center gap-2 text-[9px] sm:text-[10px] font-semibold tracking-[0.22em] uppercase text-purple-100"
+              >
+                <span className="h-[1.5px] w-5 bg-purple-200" />
+                Our Solutions
+              </div>
+
+              {/* HEADING */}
+              <h1
+                ref={(el) => { if (el) itemsRef.current[1] = el; }}
+                className="hero-heading font-extrabold tracking-tight text-white 
+                text-2xl sm:text-3xl md:text-5xl 
+                leading-[1.2]"
+              >
+                Smart Solutions <br />
+                for Your <span className="text-orange-400">Home</span>
+              </h1>
+
+              {/* TEXT */}
+              <p
+                ref={(el) => { if (el) itemsRef.current[2] = el; }}
+                className="text-xs sm:text-sm md:text-base 
+                text-white/80 
+                max-w-[280px] sm:max-w-[320px] md:max-w-[350px] 
+                leading-relaxed mt-1"
+              >
+                Explore our range of smart home products and services designed to make your life easier, safer, and more efficient.
+              </p>
+
+              {/* BUTTON */}
+              <div ref={(el) => { if (el) itemsRef.current[3] = el; }}>
+                <button className="btn-shiny flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 sm:px-6 md:px-7 py-2.5 sm:py-3 text-xs sm:text-sm rounded-[3px] font-semibold transition">
+                  Need Help →
+                </button>
+              </div>
+
             </div>
 
           </div>
-
         </div>
-      </div>
-
-      <style>{`
-        @keyframes shine {
-          100% { left: 150%; }
-        }
-      `}</style>
-    </section>
+      </section>
+    </>
   );
 }

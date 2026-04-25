@@ -169,7 +169,7 @@ export default function HeroSection() {
       <section className="hero-section relative w-full overflow-hidden bg-white">
 
         {/* ── BACKGROUND IMAGE + OVERLAYS ── */}
-        <div className="relative w-full flex items-center overflow-hidden min-h-[460px] md:min-h-[560px]">
+        <div className="relative w-full flex items-center overflow-hidden min-h-[460px] md:min-h-[600px]">
 
           <img
             src="/hero1.png"
@@ -183,7 +183,7 @@ export default function HeroSection() {
           {/* Mobile white overlay */}
           <div className="absolute inset-0 bg-white/80 md:hidden" />
 
-          {/* ── HERO TEXT ── */}
+          {/* ── HERO TEXT ── */} 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-10 pb-16 md:pt-14 md:pb-20">
 
             {/* Badge */}
@@ -229,7 +229,7 @@ export default function HeroSection() {
         {/* ── FEATURES BAR ── */}
         <div
           ref={featuresRef}
-          className="relative z-10 w-full max-w-[1200px] mx-auto px-5 sm:px-8 md:px-10 pb-12 -mt-7"
+          className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pb-12 -mt-10 md:-mt-16"
         >
           <div className="bg-white/98 backdrop-blur-xl border border-purple-200/50 shadow-[0_16px_56px_rgba(109,40,217,0.09),0_2px_8px_rgba(0,0,0,0.04)] rounded-[3px] overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">

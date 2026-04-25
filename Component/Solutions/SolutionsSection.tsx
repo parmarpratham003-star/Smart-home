@@ -133,6 +133,7 @@ export default function SolutionsSection() {
   const [active, setActive] = useState("All");
   const [hovered, setHovered] = useState<number | null>(null);
   const [animKey, setAnimKey] = useState(0);
+  const tabsRef = useRef<HTMLDivElement>(null);
   const { ref: gridRef, visible: gridVisible } = useInView(0.05);
   const { ref: featRef, visible: featVisible } = useInView(0.2);
 
@@ -146,6 +147,16 @@ export default function SolutionsSection() {
     setHovered(null);
     setAnimKey((k) => k + 1);
   };
+
+  // Scroll active tab into view on mobile
+  useEffect(() => {
+    if (tabsRef.current) {
+      const activeBtn = tabsRef.current.querySelector(".tab-active") as HTMLElement;
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+    }
+  }, [active]);
 
   return (
     <>
@@ -170,13 +181,55 @@ export default function SolutionsSection() {
         .feat-item.show {
           animation: slideInLeft 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
         }
+
+        /* Tabs: scrollable strip, centered when enough space */
+        .tabs-strip {
+          display: flex;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          border-bottom: 1px solid #e5e7eb;
+          justify-content: center;
+        }
+        .tabs-strip::-webkit-scrollbar { display: none; }
+
+        .tab-link {
+          background: none;
+          border: none;
+          border-bottom: 2.5px solid transparent;
+          padding: 0 12px 12px 12px;
+          margin-bottom: -1.5px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #888;
+          cursor: pointer;
+          white-space: nowrap;
+          flex-shrink: 0;
+          transition: color 0.2s, border-color 0.2s;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .tab-link:hover {
+          color: #55226D;
+        }
+        .tab-link.tab-active {
+          border-bottom-color: #55226D;
+          color: #55226D;
+          font-weight: 600;
+        }
+
+        /* Features bar: fix dividers for 2-col on mobile */
+        @media (max-width: 767px) {
+          .feat-bar > div:nth-child(odd)  { border-right: 1px solid #f3f4f6; }
+          .feat-bar > div:nth-child(1),
+          .feat-bar > div:nth-child(2)    { border-bottom: 1px solid #f3f4f6; }
+        }
       `}</style>
 
       <section
         className="bg-[#f5f5f7] py-14"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10">
 
           {/* HEADING */}
           <div className="text-center mb-8">
@@ -188,7 +241,7 @@ export default function SolutionsSection() {
               <div className="w-7 h-[2px] bg-[#55226D]" />
             </div>
             <h2
-              className="text-5xl font-bold text-[#55226D] leading-tight"
+              className="text-3xl sm:text-5xl font-bold text-[#55226D] leading-tight"
               style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "-0.015em" }}
             >
               Our <span className="text-orange-600">Solutions</span>
@@ -198,26 +251,20 @@ export default function SolutionsSection() {
             </p>
           </div>
 
-          {/* CATEGORY TABS */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          {/* CATEGORY TABS — scrollable on mobile, centered on desktop */}
+          <div ref={tabsRef} className="tabs-strip mb-8">
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => handleTab(cat.value)}
-                className="px-5 py-2.5 text-sm font-semibold border transition-all duration-200"
-                style={{
-                  borderRadius: "3px",
-                  backgroundColor: active === cat.value ? "#55226D" : "#fff",
-                  color: active === cat.value ? "#fff" : "#555",
-                  borderColor: active === cat.value ? "#55226D" : "#ddd",
-                }}
+                className={`tab-link${active === cat.value ? " tab-active" : ""}`}
               >
                 {cat.label}
               </button>
             ))}
           </div>
 
-          {/* PRODUCT GRID */}
+          {/* PRODUCT GRID — 1 col mobile, 2 col sm, 3 col md+ */}
           <div
             key={animKey}
             ref={gridRef}
@@ -244,7 +291,7 @@ export default function SolutionsSection() {
                 />
 
                 {/* Image */}
-                <div className="h-[220px] overflow-hidden bg-gray-100 flex-shrink-0">
+                <div className="h-[180px] sm:h-[220px] overflow-hidden bg-gray-100 flex-shrink-0">
                   <img
                     src={item.img}
                     alt={item.name}
@@ -279,35 +326,6 @@ export default function SolutionsSection() {
             ))}
           </div>
 
-          {/* FEATURES BAR */}
-          <div
-            ref={featRef}
-            className="mt-12 bg-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-100"
-            style={{ borderRadius: "3px", border: "1.5px solid #e5e7eb" }}
-          >
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className={`feat-item flex items-start gap-4 p-6 ${featVisible ? "show" : ""}`}
-                style={{ animationDelay: featVisible ? `${i * 0.13}s` : "0s" }}
-              >
-                <div
-                  className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center"
-                  style={{ background: "#f3eaf7" }}
-                >
-                  {f.icon}
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-[#1a1f2e] leading-snug mb-1">
-                    {f.title}
-                  </h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    {f.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
 
         </div>
       </section>
