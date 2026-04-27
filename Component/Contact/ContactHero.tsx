@@ -35,7 +35,7 @@ export default function ContactHero() {
 
       <section
         className="hero-font w-full h-[500px] bg-cover bg-center flex items-center"
-        style={{ backgroundImage: "url('hero3.png')" }}
+        style={{ backgroundImage: "url('hero4.png')" }}
       >
         <div className="w-full">
           <div className="max-w-[1250px] mx-auto px-6">
