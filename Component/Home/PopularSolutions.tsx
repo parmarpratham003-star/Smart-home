@@ -90,27 +90,26 @@ export default function PopularSolutions() {
       opacity = 0;
       zIndex = 1;
     }
-return {
-  position: "absolute",
-  width: `${CARD_WIDTH}px`,
-  height: `${CARD_HEIGHT}px`,
-  borderRadius: "3px",
-  overflow: "hidden",
-  left: "50%",
-  marginLeft: `-${CARD_WIDTH / 2}px`,
-  top: "45%",
-  transform: `translateY(-45%) translateX(${translateX}px) scale(${scale})`,
-  opacity,
-  zIndex,
-  background: "#fff",
-  transition: "all 0.5s ease",
 
-  boxShadow: "none", // removed
-  border: "1px solid #eee", // ✅ FIX
-  filter: abs === 0 ? "none" : "blur(1px)", // ✅ OPTIONAL PREMIUM
-
-  cursor: abs === 0 ? "default" : "pointer",
-};
+    return {
+      position: "absolute",
+      width: `${CARD_WIDTH}px`,
+      height: `${CARD_HEIGHT}px`,
+      borderRadius: "3px",
+      overflow: "hidden",
+      left: "50%",
+      marginLeft: `-${CARD_WIDTH / 2}px`,
+      top: "45%",
+      transform: `translateY(-45%) translateX(${translateX}px) scale(${scale})`,
+      opacity,
+      zIndex,
+      background: "#fff",
+      transition: "all 0.5s ease",
+      boxShadow: "none",
+      border: "1px solid #eee",
+      filter: abs === 0 ? "none" : "blur(1px)",
+      cursor: abs === 0 ? "default" : "pointer",
+    };
   };
 
   return (
@@ -125,22 +124,60 @@ return {
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
 
+          {/* Header */}
           <div className="text-center mb-16">
-            <h2
-              className="text-4xl md:text-5xl font-bold text-[#55226D]"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                letterSpacing: "-0.015em",
-              }}
-            >
-              Popular <span className="text-orange-500">Solutions</span>
-            </h2>
 
-            <p className="text-[#55226D] mt-3 text-sm max-w-md mx-auto">
-              Discover our most trusted smart home products designed for comfort, security, and control.
+            {/* Top Label */}
+            <p className="uppercase tracking-[0.28em] text-[11px] font-semibold text-orange-500 mb-3">
+              Featured Products
             </p>
+
+            {/* Heading — broken underline matching each word color */}
+            <div className="flex justify-center">
+              <h2
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  letterSpacing: "-0.015em",
+                  lineHeight: 1,
+                  margin: 0,
+                  padding: 0,
+                  fontWeight: 800,
+                  fontSize: "clamp(2.2rem, 5vw, 3rem)",
+                  whiteSpace: "nowrap",
+                  display: "inline",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#55226D",
+                    borderBottom: "3px solid #55226D",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Popular
+                </span>
+                {" "}
+                <span
+                  style={{
+                    color: "#ea580c",
+                    borderBottom: "3px solid #ea580c",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Solutions
+                </span>
+              </h2>
+            </div>
+
+            {/* Paragraph */}
+            <p className="text-[#55226D] mt-6 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+              Discover our most trusted smart home products designed for
+              comfort, security, and control.
+            </p>
+
           </div>
 
+          {/* Carousel */}
           <div
             className="relative flex items-center justify-center"
             style={{ height: "480px" }}
@@ -169,12 +206,10 @@ return {
                   </div>
 
                   <div className="h-[45%] p-5 flex flex-col justify-between">
-
                     <div>
-                      <h3 className="font-bold text-[#55226D] text-lg">
+                      <h3 className="font-bold text-[#55226D] text-xl">
                         {item.name}
                       </h3>
-
                       <p className="text-purple-950 text-sm mt-1">
                         {item.desc}
                       </p>
@@ -194,7 +229,6 @@ return {
                         Add
                       </button>
                     </div>
-
                   </div>
                 </div>
               );

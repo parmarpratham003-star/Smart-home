@@ -119,7 +119,7 @@ export default function AboutIntroSection() {
             <div ref={imageRef} className="h-full">
               <div className="rounded-[3px] overflow-hidden shadow-md h-full">
                 <img
-                  src="/About.png"
+                  src="/About1.png"
                   alt="Interior Design"
                   className="w-full h-[260px] sm:h-[340px] md:h-[430px] object-cover"
                 />

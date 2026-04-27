@@ -217,7 +217,7 @@ export default function HeroSection() {
               <button className="btn-pulse btn-shiny inline-flex items-center gap-2 text-white text-[13px] font-semibold px-6 py-3 bg-orange-500 rounded-[3px] border-none cursor-pointer transition-all duration-200 hover:-translate-y-0.5 active:scale-95">
                 Get Started <ArrowRight />
               </button>
-              <button className="btn-shiny btn-shiny-outline inline-flex items-center gap-2 text-[13px] font-semibold px-6 py-3 text-[#55226D] bg-transparent border border-violet-300 rounded-[3px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-violet-50 active:scale-95">
+              <button className="btn-shiny btn-shiny-outline inline-flex items-center gap-2 text-[13px] font-semibold px-6 py-3 text-[#55226D] bg-transparent border border-[#55226D] rounded-[3px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-violet-50 active:scale-95">
                <Link href="/Solutions">
                 Explore Solutions</Link> <ArrowRight />
               </button>

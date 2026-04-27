@@ -188,14 +188,9 @@ export default function Footer() {
 
       {/* BOTTOM */}
       <div ref={bottomRef} className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex   items-center justify-center">
           <p className="text-white/40 text-sm">© 2024 SmartHome. All rights reserved.</p>
 
-          <div className="flex gap-4 text-sm text-white/40">
-            <a href="#" className="hover:text-white transition">Privacy Policy</a>
-            <span>|</span>
-            <a href="#" className="hover:text-white transition">Terms</a>
-          </div>
         </div>
       </div>
 

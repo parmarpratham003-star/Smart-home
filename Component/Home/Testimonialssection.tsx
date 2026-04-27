@@ -62,9 +62,18 @@ export default function TestimonialsSection() {
   const t = testimonials[current];
 
   const cardVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 80 : -80, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -80 : 80, opacity: 0 }),
+    enter: (dir: number) => ({
+      x: dir > 0 ? 60 : -60,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -60 : 60,
+      opacity: 0,
+    }),
   };
 
   return (
@@ -74,62 +83,59 @@ export default function TestimonialsSection() {
       `}</style>
 
       <section
-        className="bg-white pt-8 pb-14 md:pt-10 md:pb-16 overflow-hidden"
+        className="bg-white pt-14 sm:pt-16 md:pt-24 pb-16 sm:pb-18 md:pb-24 overflow-hidden"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
 
-          {/* ✅ HEADING FIXED */}
-          <div className="text-center mb-8 md:mb-10">
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
+          {/* Heading */}
+          <div className="text-center mb-10 sm:mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(32px,4vw,48px)",
-                fontWeight: 800,
-                letterSpacing: "-0.015em",
-              }}
             >
-              <span className="text-[#55226D]">What Our </span>
-              <span className="text-orange-400">Customers</span>
-              <span className="text-orange-400"> Say</span>
-            </motion.h2>
+              <h2
+                className="flex flex-wrap justify-center gap-x-2 gap-y-1 leading-none"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(28px,8vw,48px)",
+                  fontWeight: 800,
+                }}
+              >
+                <span className="text-[#55226D] border-b-[3px] border-[#55226D] pb-1">
+                  What Our
+                </span>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15 }}
-              className="text-[#55226D] text-sm mt-2"
-            >
-              Trusted by homeowners across the country.
-            </motion.p>
+                <span className="text-orange-600 border-b-[3px] border-orange-600 pb-1">
+                  Customers Say
+                </span>
+              </h2>
+            </motion.div>
           </div>
 
-          {/* SLIDER */}
+          {/* Slider */}
           <div className="relative">
 
-            {/* PREV */}
+            {/* Prev */}
             <button
               onClick={prev}
-              className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white border border-purple-200 text-purple-500 hover:text-purple-700 flex items-center justify-center shadow-sm"
+              className="absolute left-0 sm:left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-purple-200 text-purple-500 shadow-sm flex items-center justify-center"
             >
               ‹
             </button>
 
-            {/* NEXT */}
+            {/* Next */}
             <button
               onClick={next}
-              className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white border border-purple-200 text-purple-500 hover:text-purple-700 flex items-center justify-center shadow-sm"
+              className="absolute right-0 sm:right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-purple-200 text-purple-500 shadow-sm flex items-center justify-center"
             >
               ›
             </button>
 
-            {/* CARD */}
-            <div className="max-w-2xl mx-auto">
+            {/* Card */}
+            <div className="max-w-3xl mx-auto px-10 sm:px-14 md:px-16">
               <AnimatePresence custom={direction} mode="wait">
                 <motion.div
                   key={current}
@@ -138,47 +144,60 @@ export default function TestimonialsSection() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ duration: 0.4 }}
-                  className="bg-purple-50  rounded-[3px] px-5 sm:px-10 py-6 text-center"
+                  transition={{ duration: 0.45 }}
+                  className="bg-purple-50 rounded-[3px] px-5 sm:px-8 md:px-12 py-8 sm:py-10 md:py-12 text-center min-h-[320px] sm:min-h-[290px]"
                 >
-                 <div className="flex justify-center mb-4">
-                  <div className="text-[#55226D] text-5xl leading-none font-bold">
-                    “
+                  {/* Quote */}
+                  <div className="flex justify-center mb-4 sm:mb-5">
+                    <span
+                      className="text-[#55226D] font-bold"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: "44px",
+                        lineHeight: 1,
+                        letterSpacing: "-8px",
+                      }}
+                    >
+                      “
+                    </span>
                   </div>
-                </div>
 
-                  <p className="text-[#55226D] text-sm md:text-base max-w-xl mx-auto mb-6">
+                  {/* Text */}
+                  <p className="text-[#55226D] text-sm sm:text-base leading-relaxed mb-7 max-w-xl mx-auto">
                     {t.quote}
                   </p>
 
+                  {/* User */}
                   <div className="flex items-center justify-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-orange-600 text-white flex items-center justify-center font-semibold text-sm">
+                    <div className="w-11 h-11 rounded-full bg-orange-600 text-white text-sm font-semibold flex items-center justify-center">
                       {t.avatar}
                     </div>
+
                     <div className="text-left">
-                      <p className="font-semibold text-[#55226D] text-sm">
+                      <p className="text-[#55226D] font-semibold text-sm sm:text-base">
                         {t.name}
                       </p>
-                      <p className="text-[#55226D] text-xs">
+                      <p className="text-[#55226D] text-xs sm:text-sm">
                         {t.role}
                       </p>
                     </div>
                   </div>
-
                 </motion.div>
               </AnimatePresence>
             </div>
 
           </div>
 
-          {/* DOTS */}
-          <div className="flex justify-center gap-2 mt-5">
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6 sm:mt-8">
             {testimonials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i, i > current ? 1 : -1)}
-                className={`h-2 rounded-full transition-all ${
-                  i === current ? "w-6 bg-[#55226D]" : "w-2 bg-purple-300"
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "w-7 bg-[#55226D]"
+                    : "w-2 bg-[#55226D]"
                 }`}
               />
             ))}
