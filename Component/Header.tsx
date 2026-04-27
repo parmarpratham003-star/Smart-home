@@ -11,15 +11,15 @@ const jakarta = Plus_Jakarta_Sans({
 
 const HomeIcon = () => (
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z" fill="#7c3aed" opacity="0.15"/>
-    <path d="M3 9.5L12 3l9 6.5" stroke="#7c3aed" strokeWidth="2"/>
-    <path d="M9 21V12h6v9" stroke="#7c3aed" strokeWidth="2"/>
-    <rect x="5" y="9" width="14" height="12" rx="1" stroke="#7c3aed" strokeWidth="2"/>
+    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z" fill="#55226D" opacity="0.15"/>
+    <path d="M3 9.5L12 3l9 6.5" stroke="#55226D" strokeWidth="2"/>
+    <path d="M9 21V12h6v9" stroke="#55226D" strokeWidth="2"/>
+    <rect x="5" y="9" width="14" height="12" rx="1" stroke="#55226D" strokeWidth="2"/>
   </svg>
 );
 
 const MenuIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#55226D" strokeWidth="2">
     <line x1="3" y1="6" x2="21" y2="6"/>
     <line x1="3" y1="12" x2="21" y2="12"/>
     <line x1="3" y1="18" x2="21" y2="18"/>
@@ -27,7 +27,7 @@ const MenuIcon = () => (
 );
 
 const CloseIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#55226D" strokeWidth="2">
     <line x1="18" y1="6" x2="6" y2="18"/>
     <line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
