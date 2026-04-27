@@ -189,9 +189,15 @@ export default function SolutionsSection() {
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
           border-bottom: 1px solid #e5e7eb;
-          justify-content: center;
+          justify-content: flex-start;
         }
         .tabs-strip::-webkit-scrollbar { display: none; }
+
+        @media (min-width: 540px) {
+          .tabs-strip {
+            justify-content: center;
+          }
+        }
 
         .tab-link {
           background: none;
@@ -207,6 +213,9 @@ export default function SolutionsSection() {
           flex-shrink: 0;
           transition: color 0.2s, border-color 0.2s;
           font-family: 'Plus Jakarta Sans', sans-serif;
+          min-height: 44px;
+          display: flex;
+          align-items: flex-end;
         }
         .tab-link:hover {
           color: #55226D;
@@ -264,11 +273,11 @@ export default function SolutionsSection() {
             ))}
           </div>
 
-          {/* PRODUCT GRID — 1 col mobile, 2 col sm, 3 col md+ */}
+          {/* PRODUCT GRID — 1 col mobile, 2 col from 480px, 3 col md+ */}
           <div
             key={animKey}
             ref={gridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+            className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 gap-4"
           >
             {filtered.map((item, i) => (
               <div
@@ -291,7 +300,7 @@ export default function SolutionsSection() {
                 />
 
                 {/* Image */}
-                <div className="h-[180px] sm:h-[220px] overflow-hidden bg-gray-100 flex-shrink-0">
+                <div className="aspect-video sm:h-[220px] overflow-hidden bg-gray-100 flex-shrink-0">
                   <img
                     src={item.img}
                     alt={item.name}
@@ -313,7 +322,7 @@ export default function SolutionsSection() {
                       <span className="text-[10px] text-gray-400">+ free setup</span>
                     </div>
                     <button
-                      className="text-xs font-semibold text-white px-4 py-[7px] transition-colors duration-200"
+                      className="text-xs font-semibold text-white px-4 py-[9px] sm:py-[7px] transition-colors duration-200"
                       style={{ background: "#55226D", borderRadius: "3px" }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = "#ea580c")}
                       onMouseLeave={(e) => (e.currentTarget.style.background = "#55226D")}
