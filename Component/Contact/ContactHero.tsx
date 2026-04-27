@@ -10,14 +10,14 @@ export default function ContactHero() {
       if (!el) return;
 
       el.style.opacity = "0";
-      el.style.transform =
-        i % 2 === 0 ? "translateX(-35px)" : "translateX(35px)";
-      el.style.transition = `all 0.7s ease ${i * 120}ms`;
+      el.style.transform = "translateX(-45px)";
+      el.style.transition = `all 0.8s ease ${i * 140}ms`;
     });
 
     setTimeout(() => {
       itemsRef.current.forEach((el) => {
         if (!el) return;
+
         el.style.opacity = "1";
         el.style.transform = "translateX(0)";
       });
@@ -34,20 +34,21 @@ export default function ContactHero() {
       `}</style>
 
       <section
-        className="hero-font w-full h-[500px] bg-cover bg-center flex items-center"
-        style={{ backgroundImage: "url('hero4.png')" }}
+        className="hero-font w-full h-[420px] sm:h-[470px] md:h-[500px] bg-cover bg-center flex items-start pt-12 sm:pt-16 md:pt-20"
+        style={{ backgroundImage: "url('hero5.png')" }}
       >
         <div className="w-full">
-          <div className="max-w-[1250px] mx-auto px-6">
+          <div className="max-w-[1250px] mx-auto px-5 sm:px-8 md:px-8 md:-mt-8">
 
-            <div className="max-w-[520px] text-white space-y-5 -mt-2 md:-mt-20">
+            {/* Content */}
+            <div className="max-w-[620px] text-white space-y-4">
 
               {/* Badge */}
               <div
                 ref={(el) => {
                   if (el) itemsRef.current[0] = el;
                 }}
-                className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-purple-100"
+                className="flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold tracking-[0.24em] uppercase text-purple-100"
               >
                 <span className="h-[1.5px] w-5 bg-purple-200" />
                 Contact Us
@@ -58,21 +59,21 @@ export default function ContactHero() {
                 ref={(el) => {
                   if (el) itemsRef.current[1] = el;
                 }}
-                className="hero-heading font-extrabold tracking-tight text-2xl sm:text-4xl md:text-5xl leading-[1.15]"
+                className="hero-heading font-extrabold tracking-tight text-[28px] leading-[1.08] sm:text-[44px] md:text-[56px]"
               >
-                Let’s Start Your <br />
-                Smart Living Journey
+                Let’s Create Your{" "}
+                <span className="text-orange-400">Dream</span>
               </h1>
 
-              {/* Text */}
+              {/* Description */}
               <p
                 ref={(el) => {
                   if (el) itemsRef.current[2] = el;
                 }}
-                className="text-xs sm:text-sm md:text-base text-white/90 max-w-[380px] leading-relaxed"
+                className="text-[13px] sm:text-base md:text-lg text-white/90 max-w-[560px] leading-relaxed"
               >
-                Get in touch with our team for smart home solutions,
-                interior ideas, support, and project consultations.
+                Connect with our experts for smart home ideas,
+interior guidance, and seamless support.
               </p>
 
             </div>
