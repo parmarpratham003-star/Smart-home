@@ -104,15 +104,15 @@ export default function TestimonialsSection() {
                   fontWeight: 800,
                 }}
               >
-                <span className="text-[#55226D] border-b-[3px] border-[#55226D] pb-1">
+                <span className="text-[#55226D] border-b-[3px] border-[#55226D] pb-2">
                   What Our
                 </span>
 
-                <span className="text-orange-600 border-b-[3px] border-orange-600 pb-1">
+                <span className="text-orange-600 border-b-[3px] border-orange-600 pb-2">
                   Customers Say
                 </span>
               </h2>
-              <p className="text-[#55226D] text-sm leading-relaxed mt-2">
+              <p className="text-[#55226D] text-sm leading-relaxed mt-3">
                 Smart solutions designed to make your home safer and more comfortable.
               </p>
 

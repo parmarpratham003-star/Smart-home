@@ -74,11 +74,11 @@ export default function ContactPage() {
             {/* LEFT: Image — hidden on mobile */}
             <div className="relative overflow-hidden hidden lg:block">
               <img
-                src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
+                src="contact.png"
                 alt="Modern Interior"
                 className="w-full h-full object-cover min-h-[320px]"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#55226D]/40 to-transparent" />
+              <div className="absolute inset-0  from-[#55226D]/40 to-transparent" />
               <div className="absolute top-7 left-7 bg-white/90 rounded-[3px] px-4 py-3 anim-l-1">
                 <p className="uppercase tracking-[0.22em] text-[10px] font-semibold text-orange-500 mb-1">
                   Smart Living
@@ -95,11 +95,11 @@ export default function ContactPage() {
               {/* Mobile image strip — shown only on mobile */}
               <div className="relative rounded-[3px] overflow-hidden mb-6 h-40 lg:hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+                  src="contact.png"
                   alt="Modern Interior"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#55226D]/50 to-transparent" />
+                <div className="absolute inset-0 from-[#55226D]/50 to-transparent" />
                 <div className="absolute bottom-4 left-4 bg-white/90 rounded-[3px] px-3 py-2">
                   <p className="uppercase tracking-[0.22em] text-[9px] font-semibold text-orange-500 mb-0.5">
                     Smart Living
@@ -172,6 +172,8 @@ export default function ContactPage() {
               </div>
 
               <form className="space-y-4 sm:space-y-5">
+
+                {/* Row 1: Name + Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <input
                     type="text"
@@ -185,6 +187,21 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {/* Row 2: Mobile Number (full width) */}
+                <div className="flex h-12">
+                  {/* Country code prefix */}
+                  <span className="inline-flex items-center px-3 border border-r-0 border-gray-200 rounded-l-[3px] bg-gray-50 text-sm text-[#55226D] font-medium select-none whitespace-nowrap">
+                    +91
+                  </span>
+                  <input
+                    type="tel"
+                    placeholder="Mobile Number"
+                    maxLength={10}
+                    className="flex-1 h-full px-4 border border-gray-200 rounded-r-[3px] outline-none focus:border-[#55226D] text-sm text-[#55226D]"
+                  />
+                </div>
+
+                {/* Row 3: Message */}
                 <textarea
                   rows={5}
                   placeholder="Your Message"
