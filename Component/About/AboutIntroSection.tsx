@@ -8,14 +8,13 @@ export default function AboutIntroSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Image: start off-screen to the LEFT
     if (imageRef.current) {
       imageRef.current.style.opacity = "0";
       imageRef.current.style.transform = "translateX(-60px)";
-      imageRef.current.style.transition = "opacity 0.85s ease 0ms, transform 0.85s ease 0ms";
+      imageRef.current.style.transition =
+        "opacity 0.85s ease 0ms, transform 0.85s ease 0ms";
     }
 
-    // Text items: start off-screen to the RIGHT
     textItemsRef.current.forEach((el, i) => {
       if (!el) return;
       el.style.opacity = "0";
@@ -23,7 +22,6 @@ export default function AboutIntroSection() {
       el.style.transition = `opacity 0.8s ease ${i * 150}ms, transform 0.8s ease ${i * 150}ms`;
     });
 
-    // Trigger on scroll into view
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -31,11 +29,13 @@ export default function AboutIntroSection() {
             imageRef.current.style.opacity = "1";
             imageRef.current.style.transform = "translateX(0)";
           }
+
           textItemsRef.current.forEach((el) => {
             if (!el) return;
             el.style.opacity = "1";
             el.style.transform = "translateX(0)";
           });
+
           observer.disconnect();
         }
       },
@@ -91,9 +91,8 @@ export default function AboutIntroSection() {
 
       <section
         ref={sectionRef}
-        className="relative bg-white overflow-hidden pt-8 sm:pt-10 md:pt-14 pb-3 hero-font"
+        className="relative bg-white overflow-hidden pt-10 sm:pt-12 md:pt-14 pb-8 sm:pb-10 hero-font"
       >
-
         {/* Left Lamp */}
         <div className="hidden lg:block absolute left-6 top-0 z-20">
           <img
@@ -113,40 +112,46 @@ export default function AboutIntroSection() {
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-center">
 
-            {/* LEFT IMAGE — slides in from left */}
-            <div ref={imageRef} className="h-full">
+            {/* LEFT IMAGE */}
+            <div ref={imageRef} className="h-full order-1">
               <div className="rounded-[3px] overflow-hidden shadow-md h-full">
                 <img
                   src="/About1.png"
                   alt="Interior Design"
-                  className="w-full h-[260px] sm:h-[340px] md:h-[430px] object-cover"
+                  className="w-full h-[240px] sm:h-[320px] md:h-[430px] object-cover"
                 />
               </div>
             </div>
 
-            {/* RIGHT CONTENT — each item slides in from right */}
-            <div className="max-w-xl flex flex-col justify-center h-full">
+            {/* RIGHT CONTENT */}
+            <div className="max-w-xl flex flex-col justify-center h-full order-2 text-center md:text-left mx-auto md:mx-0">
 
               <p
-                ref={(el) => { if (el) textItemsRef.current[0] = el; }}
+                ref={(el) => {
+                  if (el) textItemsRef.current[0] = el;
+                }}
                 className="text-[10px] sm:text-[11px] tracking-[0.24em] uppercase font-semibold text-orange-500 mb-3"
               >
                 Who We Are
               </p>
 
               <h2
-                ref={(el) => { if (el) textItemsRef.current[1] = el; }}
-                className="hero-heading text-[#55226D] text-[30px] sm:text-4xl md:text-[54px] font-extrabold leading-[1.08] mb-5"
+                ref={(el) => {
+                  if (el) textItemsRef.current[1] = el;
+                }}
+                className="hero-heading text-[#55226D] text-[28px] sm:text-4xl md:text-[54px] font-extrabold leading-[1.08] mb-4 sm:mb-5"
               >
                 Creative Solutions by <br />
                 Professional Designers
               </h2>
 
               <p
-                ref={(el) => { if (el) textItemsRef.current[2] = el; }}
-                className="text-[#55226D] text-sm sm:text-base leading-relaxed max-w-lg mb-6"
+                ref={(el) => {
+                  if (el) textItemsRef.current[2] = el;
+                }}
+                className="text-[#55226D] text-sm sm:text-base leading-relaxed max-w-lg mb-6 mx-auto md:mx-0"
               >
                 We create elegant interiors and smart living spaces that blend
                 comfort, style, and functionality. Our expert team transforms
@@ -154,7 +159,10 @@ export default function AboutIntroSection() {
               </p>
 
               <div
-                ref={(el) => { if (el) textItemsRef.current[3] = el; }}
+                ref={(el) => {
+                  if (el) textItemsRef.current[3] = el;
+                }}
+                className="flex justify-center md:justify-start"
               >
                 <button className="btn-shiny bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-7 py-3 rounded-[3px] text-sm font-semibold transition-all duration-300 w-fit">
                   Discover More

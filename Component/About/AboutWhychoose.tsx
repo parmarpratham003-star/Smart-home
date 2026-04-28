@@ -9,8 +9,6 @@ type CardProps = {
   direction: "left" | "right" | "bottom";
   big?: boolean;
   tall?: boolean;
-  extraTitle?: string;
-  extraDesc?: string;
 };
 
 export default function AboutWhyChoose() {
@@ -21,7 +19,7 @@ export default function AboutWhyChoose() {
       `}</style>
 
       <section
-        className="bg-white pb-15 py-15 overflow-hidden"
+        className="bg-white pb-20 py-10 overflow-hidden"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
@@ -38,12 +36,10 @@ export default function AboutWhyChoose() {
                 fontFamily: "'Cormorant Garamond', serif",
                 fontSize: "clamp(32px,4vw,48px)",
                 fontWeight: 800,
-                letterSpacing: "-0.015em",
               }}
             >
               <span className="text-[#55226D]">Why </span>
-              <span className="text-orange-400">Choose</span>
-              <span className="text-orange-400"> Us</span>
+              <span className="text-orange-400">Choose Us</span>
             </motion.h2>
 
             <motion.p
@@ -52,7 +48,8 @@ export default function AboutWhyChoose() {
               transition={{ duration: 0.6 }}
               className="text-[#55226D] text-sm md:text-base leading-relaxed max-w-md md:ml-auto"
             >
-              We are a technology-driven company focused on delivering innovative smart home solutions.
+              We are a technology-driven company focused on delivering
+              innovative smart home solutions.
             </motion.p>
 
           </div>
@@ -74,21 +71,21 @@ export default function AboutWhyChoose() {
               <Card
                 title="Experienced & Certified Team"
                 desc="Our skilled professionals ensure high-quality installation and reliable service."
-                img="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=800"
+                img="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200"
                 direction="left"
               />
 
               <Card
                 title="Latest Smart Home Technology"
                 desc="We use cutting-edge technology to provide advanced and efficient home automation solutions."
-                img="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800"
+                img="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200"
                 direction="left"
               />
 
               <Card
                 title="Affordable Pricing"
                 desc="Get premium smart home solutions at competitive and budget-friendly prices."
-                img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200"
+                img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600"
                 direction="bottom"
                 big
               />
@@ -98,7 +95,7 @@ export default function AboutWhyChoose() {
             <Card
               title="24/7 Customer Support"
               desc="Our support team is available anytime to assist you with your smart home needs."
-              img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200"
+              img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1600"
               direction="right"
               tall
             />
@@ -134,40 +131,28 @@ function Card({
       transition={{ duration: 0.7, ease: "easeOut" }}
       className={`relative overflow-hidden group ${
         big ? "sm:col-span-2 h-[260px]" : ""
-      } ${tall ? "min-h-[420px]" : "h-[200px]"}`}
-      style={{ borderRadius: "3px" }}
+      } ${tall ? "min-h-[420px]" : "h-[220px]"}`}
+      style={{ borderRadius: "4px" }}
     >
+      {/* IMAGE */}
       <img
         src={img}
-        className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+        alt={title}
+        className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
       />
 
-      {/* BASE OVERLAY */}
-    <div className="absolute inset-0 
-                bg-gradient-to-t 
-                from-black/40 
-                via-black/10 
-                to-transparent"></div>
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
-      {/* HOVER BLACK OVERLAY */}
-     <div className="absolute inset-0 
-                bg-black/30 
-                opacity-0 
-                group-hover:opacity-100 
-                transition duration-500"></div>
-      {/* TITLE */}
-      <h3 className="absolute bottom-5 left-5 text-white text-lg font-semibold z-10 drop-shadow-md
-                     transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
-        {title}
-      </h3>
+      {/* TITLE FIXED AT BOTTOM */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-5 sm:p-6">
 
-      {/* HOVER CONTENT */}
-      <div className="absolute inset-0 flex flex-col justify-end p-5 text-white z-20
-                      opacity-0 translate-y-full
-                      group-hover:opacity-100 group-hover:translate-y-0
-                      transition-all duration-500">
+        <h3 className="text-white text-lg sm:text-xl font-semibold drop-shadow-md">
+          {title}
+        </h3>
 
-        <p className="text-sm leading-relaxed drop-shadow-md">
+        {/* DESCRIPTION ON HOVER */}
+        <p className="text-white/90 text-sm leading-relaxed mt-2 opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-24 transition-all duration-500">
           {desc}
         </p>
 
