@@ -189,7 +189,7 @@ export default function Footer() {
       {/* BOTTOM */}
       <div ref={bottomRef} className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex   items-center justify-center">
-          <p className="text-white/40 text-sm">© 2024 SmartHome. All rights reserved.</p>
+          <p className="text-white/40 text-sm">© 2026 SmartHome. All rights reserved.</p>
 
         </div>
       </div>

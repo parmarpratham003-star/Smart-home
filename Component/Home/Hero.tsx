@@ -184,7 +184,7 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-white/80 md:hidden" />
 
           {/* ── HERO TEXT ── */} 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-10 pb-16 md:pt-14 md:pb-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-10 pb-12  md:pb-30">
 
             {/* Badge */}
             <div

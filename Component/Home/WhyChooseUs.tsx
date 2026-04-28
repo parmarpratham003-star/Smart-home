@@ -135,23 +135,23 @@ function Card({
       style={{ borderRadius: "4px" }}
     >
       {/* IMAGE */}
+      {/* IMAGE */}
       <img
         src={img}
         alt={title}
         className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
       />
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+      {/* OVERLAY ONLY BOTTOM AREA */}
+      <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/80 via-black/45 to-transparent transition-all duration-500 group-hover:h-[60%]"></div>
 
-      {/* TITLE FIXED AT BOTTOM */}
+      {/* CONTENT */}
       <div className="absolute bottom-0 left-0 right-0 z-20 p-5 sm:p-6">
 
         <h3 className="text-white text-lg sm:text-xl font-semibold drop-shadow-md">
           {title}
         </h3>
 
-        {/* DESCRIPTION ON HOVER */}
         <p className="text-white/90 text-sm leading-relaxed mt-2 opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-24 transition-all duration-500">
           {desc}
         </p>

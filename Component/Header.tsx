@@ -1,12 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // ✅ added
+import { usePathname } from "next/navigation";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
-const jakarta = Plus_Jakarta_Sans({ 
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"] 
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const HomeIcon = () => (
@@ -35,16 +35,16 @@ const CloseIcon = () => (
 
 const links = [
   { label: "Home", href: "/" },
-  { label: "Solutions", href: "/Solutions" }, 
+  { label: "Solutions", href: "/Solutions" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
-  const [activeLink, setActiveLink] = useState("Home"); // unchanged
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname(); // ✅ added
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -59,18 +59,31 @@ export default function Header() {
         .logo-text { font-family: 'Cormorant Garamond', Georgia, serif; }
       `}</style>
 
-      <nav className={`${jakarta.className} bg-white sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "shadow-lg border-b border-purple-100" : "shadow-md"
-      }`}>
-        
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <nav
+        className={`${jakarta.className} bg-white sticky top-0 z-50 transition-all duration-300 ${
+          scrolled ? "shadow-lg border-b border-purple-100" : "shadow-md"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
 
-          {/* Logo */}
+          {/* Logo Icon Left */}
           <Link href="/" className="flex items-center gap-2 group">
             <span className="transition-transform duration-300 group-hover:scale-110">
               <HomeIcon />
             </span>
-            <span className="logo-text text-3xl font-extrabold tracking-tight text-[#55226D] group-hover:text-purple-800 transition-all duration-300">
+
+            {/* Desktop Name */}
+            <span className="hidden md:block logo-text text-3xl font-extrabold tracking-tight text-[#55226D] group-hover:text-purple-800 transition-all duration-300">
+              Smart<span className="text-orange-500">Home</span>
+            </span>
+          </Link>
+
+          {/* Mobile Center Name */}
+          <Link
+            href="/"
+            className="md:hidden absolute left-1/2 -translate-x-1/2"
+          >
+            <span className="logo-text text-3xl font-extrabold tracking-tight text-[#55226D]">
               Smart<span className="text-orange-500">Home</span>
             </span>
           </Link>
@@ -84,35 +97,28 @@ export default function Header() {
                   onClick={() => setActiveLink(label)}
                   className="group relative"
                 >
-                  <span className={`text-[15px] font-semibold tracking-tight transition-all duration-300 ${
-                    pathname === href
-                      ? "text-[#55226D]"
-                      : "text-gray-500 group-hover:text-[#55226D]"
-                  }`}>
+                  <span
+                    className={`text-[15px] font-semibold tracking-tight transition-all duration-300 ${
+                      pathname === href
+                        ? "text-[#55226D]"
+                        : "text-gray-500 group-hover:text-[#55226D]"
+                    }`}
+                  >
                     {label}
                   </span>
 
-                  <span className={`absolute left-0 -bottom-1 h-[2px] bg-[#55226D] transition-all duration-300 ${
+                  <span
+                    className={`absolute left-0 -bottom-1 h-[2px] bg-[#55226D] transition-all duration-300 ${
                       pathname === href ? "w-full" : "w-0 group-hover:w-full"
-                  }`}></span>
+                    }`}
+                  ></span>
                 </Link>
               </li>
             ))}
           </ul>
 
           {/* CTA Button */}
-          <button className="
-            hidden md:inline-flex
-            px-6 py-2.5 rounded-[4px]
-            text-sm font-bold tracking-tight
-            text-white
-            bg-gradient-to-r from-orange-500 to-orange-400
-            shadow-sm
-            transition-all duration-300
-            hover:from-orange-600 hover:to-orange-500
-            hover:shadow-md
-            active:scale-95
-          ">
+          <button className="hidden md:inline-flex px-6 py-2.5 rounded-[4px] text-sm font-bold tracking-tight text-white bg-gradient-to-r from-orange-500 to-orange-400 shadow-sm transition-all duration-300 hover:from-orange-600 hover:to-orange-500 hover:shadow-md active:scale-95">
             Get Started
           </button>
 
@@ -126,9 +132,11 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden px-6 overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-96 py-5 border-t border-gray-50" : "max-h-0"
-        }`}>
+        <div
+          className={`md:hidden px-6 overflow-hidden transition-all duration-300 ${
+            mobileOpen ? "max-h-96 py-5 border-t border-gray-50" : "max-h-0"
+          }`}
+        >
           {links.map(({ label, href }) => (
             <Link
               key={label}
@@ -138,19 +146,14 @@ export default function Header() {
                 setMobileOpen(false);
               }}
               className={`block py-3 text-lg font-bold tracking-tight transition-colors ${
-                  pathname === href ? "text-[#55226D]" : "text-gray-600"
+                pathname === href ? "text-[#55226D]" : "text-gray-600"
               }`}
             >
               {label}
             </Link>
           ))}
 
-          <button className="
-            mt-4 w-full
-            bg-gradient-to-r from-orange-500 to-orange-400
-            text-white py-3 rounded-[4px]
-            text-sm font-bold tracking-tight
-          ">
+          <button className="mt-4 w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white py-3 rounded-[4px] text-sm font-bold tracking-tight">
             Get Started
           </button>
         </div>

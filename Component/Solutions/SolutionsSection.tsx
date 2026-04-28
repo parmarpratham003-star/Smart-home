@@ -241,25 +241,39 @@ export default function SolutionsSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10">
 
           {/* HEADING */}
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <div className="w-7 h-[2px] bg-[#55226D]" />
-              <span className="text-[11px] font-semibold tracking-[.12em] uppercase text-[#55226D]">
-                Smart Home
-              </span>
-              <div className="w-7 h-[2px] bg-[#55226D]" />
-            </div>
-            <h2
-              className="text-3xl sm:text-5xl font-bold text-[#55226D] leading-tight"
-              style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "-0.015em" }}
-            >
-              Our <span className="text-orange-600">Solutions</span>
-            </h2>
-            <p className="text-sm text-[#55226D] mt-3 opacity-70">
-              Discover our most trusted smart home products designed for comfort, security, and control.
-            </p>
-          </div>
+         {/* HEADING */}
+{/* HEADING */}
+<div className="text-center mb-8">
+  <div className="flex items-center justify-center gap-3 mb-3">
+    <div className="w-7 h-[2px] bg-[#55226D]" />
+    <span className="text-[11px] font-semibold tracking-[.12em] uppercase text-[#55226D]">
+      Smart Home
+    </span>
+    <div className="w-7 h-[2px] bg-[#55226D]" />
+  </div>
 
+  <h2
+    className="text-3xl sm:text-5xl font-bold leading-tight"
+    style={{
+      fontFamily: "'Cormorant Garamond', serif",
+      letterSpacing: "-0.015em",
+    }}
+  >
+    <span className="text-[#55226D] inline-block">
+      Our
+      <span className="block  h-[3px] w-full bg-[#55226D]"></span>
+    </span>{" "}
+    <span className="text-orange-600 inline-block ml-2">
+      Solutions
+      <span className="block  h-[3px] w-full bg-orange-600"></span>
+    </span>
+  </h2>
+
+  <p className="text-sm text-[#55226D] mt-4 opacity-70">
+    Discover our most trusted smart home products designed for comfort,
+    security, and control.
+  </p>
+</div>
           {/* CATEGORY TABS — scrollable on mobile, centered on desktop */}
           <div ref={tabsRef} className="tabs-strip mb-8">
             {categories.map((cat) => (

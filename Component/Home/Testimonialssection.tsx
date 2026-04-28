@@ -112,6 +112,10 @@ export default function TestimonialsSection() {
                   Customers Say
                 </span>
               </h2>
+              <p className="text-[#55226D] text-sm leading-relaxed mt-2">
+                Smart solutions designed to make your home safer and more comfortable.
+              </p>
+
             </motion.div>
           </div>
 

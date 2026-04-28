@@ -55,7 +55,7 @@ const steps = [
   },
 ];
 
-const cardOffsets = ["mt-0", "mt-6", "mt-0", "mt-6"];
+const cardOffsets = ["mt-0", "mt-0", "mt-0", "mt-0"];
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
